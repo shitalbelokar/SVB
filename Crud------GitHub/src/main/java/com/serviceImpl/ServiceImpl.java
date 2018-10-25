@@ -1,5 +1,7 @@
 package com.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,20 @@ public class ServiceImpl implements ServiceI{
 		Employee em=di.save(e);
 		return em;
 	}
+	@Override
+	public List<Employee> getAllRecord() {
+		System.out.println("in getallrecord");
+		List<Employee>list=(List<Employee>) di.findAll();
+		return list;
+	}
 	
+	@Override
+	public Employee findAllByUnAndPw(String un, String pw) {
+		System.out.println("in serviceimpl login");
+		Employee em=di.findAllByUnAndPw(un, pw);
+		return em;
+	}
 
+
+	
 }

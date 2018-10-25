@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +31,21 @@ public String registerEmployee(@ModelAttribute Employee e,Model model){
 	Employee em=si.registerEmployee(e);
 	model.addAttribute("msg", "data saved----!");
 	return "Login";
+	
+}
+@RequestMapping("/log")
+public String loginEmployee(@ModelAttribute Employee e,Model model){
+	System.out.println("in loginpage");
+	Employee em=si.findAllByUnAndPw(e.getUn(), e.getPw());
+	if(em!=null){
+		List<Employee>list=si.getAllRecord();
+		model.addAttribute("data",list);
+		return "Success";
+	}
+	else{
+		model.addAttribute("msg", "wrong username or password----!");
+		return "Login";
+	}
 	
 }
 }
