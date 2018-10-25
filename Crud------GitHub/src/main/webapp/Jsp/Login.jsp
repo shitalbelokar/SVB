@@ -7,8 +7,9 @@
 <h1>**Login page**</h1>
 </head>
 <body bgcolor="powderblue">
+${msg}
 <form action="log">
-e<pre>
+<pre>
 Username:-<input type="text" name="un">
 
 Password:-<input type="text" name="pw">
